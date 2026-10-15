@@ -3,6 +3,7 @@
 # 🏡 AI Real Estate Intelligence Platform
 ### *Global Machine Learning Property Valuation & Market Analytics Engine*
 
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://ai-realestate-platform-seven.vercel.app)
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Model-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
@@ -14,6 +15,11 @@
 </p>
 
 </div>
+
+---
+
+## 🌐 Live Application
+- **Access the Live Platform here**: [ai-realestate-platform-seven.vercel.app](https://ai-realestate-platform-seven.vercel.app)
 
 ---
 
