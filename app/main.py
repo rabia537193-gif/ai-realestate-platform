@@ -54,7 +54,6 @@ def predict_price(features: HouseFeatures):
   if model is None:
     raise HTTPException(status_code=500, detail="Model file not found!")
 
-  # Input data for the ML model (using the 8 numerical features)
   input_data = np.array([[
       features.OverallQual,
       features.GrLivArea,
@@ -68,12 +67,14 @@ def predict_price(features: HouseFeatures):
 
   base_prediction = model.predict(input_data)[0]
 
-  # Optional location-based multiplier logic to make it realistic per city/country
+  # Location multiplier logic
   multiplier = 1.0
-  if features.city.lower() in ["karachi", "lahore", "islamabad"]:
-    multiplier = 0.85  # Regional adjustment example
-  elif features.city.lower() in ["new york", "london", "dubai"]:
-    multiplier = 1.35
+  if features.city.lower() in ["karachi", "lahore", "islamabad", "faisalabad"]:
+    multiplier = 0.85
+  elif features.city.lower() in ["dubai", "abu dhabi"]:
+    multiplier = 1.40
+  elif features.city.lower() in ["new york", "london"]:
+    multiplier = 1.60
 
   final_price = base_prediction * multiplier
 

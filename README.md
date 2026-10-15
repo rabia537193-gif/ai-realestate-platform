@@ -10,7 +10,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 <p align="center">
-  <b>Instant property market valuations powered by advanced Machine Learning regression models and a modern glassmorphism web interface.</b>
+  <b>Instant property market valuations, global location analytics, and dynamic interactive charts powered by advanced Machine Learning regression models.</b>
 </p>
 
 </div>
@@ -20,10 +20,11 @@
 ## ✨ Key Highlights & Features
 
 - **🤖 High-Precision ML Model**: Powered by a trained `scikit-learn` regression model (`house_price_model.pkl`) optimized for real estate appraisal.
-- **💎 Glassmorphism Dashboard UI**: A breathtaking, responsive user interface styled with custom CSS gradients, Google Fonts (*Plus Jakarta Sans*), and FontAwesome icons.
-- **💱 Multi-Currency Converter**: Dynamic, real-time conversion engine supporting **USD ($), Pakistani Rupees (PKR ₨), Euros (€), British Pounds (£), UAE Dirham (AED), and Indian Rupees (INR ₹)**.
+- **🌍 Global Country & City Selector**: Dynamic cascading dropdowns supporting multiple countries (Pakistan, UAE, USA, UK, India) and key international cities.
+- **📊 Real-Time Market Analytics**: Built-in interactive **Chart.js** graphs displaying price trends by quality rating and regional valuation multipliers.
+- **💎 Glassmorphism Dashboard UI**: A breathtaking, responsive side-by-side user interface styled with custom CSS gradients, Google Fonts (*Plus Jakarta Sans*), and FontAwesome icons.
+- **💱 Multi-Currency Converter**: Real-time conversion engine supporting **USD ($), Pakistani Rupees (PKR ₨), Euros (€), British Pounds (£), UAE Dirham (AED), and Indian Rupees (INR ₹)**.
 - **⚡ Quick Property Presets**: One-click preset selectors (*Cozy Home*, *Modern Family*, *Luxury Villa*) for instantaneous testing and evaluation.
-- **🚀 Interactive API Documentation**: Fully automated OpenAPI endpoints and Swagger UI integrated directly via FastAPI (`/docs`).
 
 ---
 
@@ -36,7 +37,7 @@ ai-realestate-platform/
 │   ├── __init__.py
 │   ├── main.py              # FastAPI application core & route controllers
 │   └── templates/
-│       └── index.html       # Responsive frontend dashboard UI
+│       └── index.html       # Responsive frontend dashboard UI & Chart.js integration
 │
 ├── models/
 │   └── house_price_model.pkl # Trained Scikit-Learn regression model
