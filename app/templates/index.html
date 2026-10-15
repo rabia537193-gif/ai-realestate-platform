@@ -134,7 +134,7 @@
             <a class="navbar-brand fw-bold fs-5 d-flex align-items-center" href="#">
                 <i class="fa-solid fa-house-laptop text-warning me-2"></i> AI Real Estate Hub
             </a>
-            <span class="badge badge-ai">v2.5 Live Engine</span>
+            <span class="badge badge-ai">v3.0 Global Engine</span>
         </div>
     </nav>
 
@@ -145,7 +145,7 @@
         <div class="hero-banner text-center">
             <h1 class="fw-extrabold mb-2 fs-2">🏡 AI Real Estate Intelligence Platform</h1>
             <p class="text-light opacity-75 mb-0 fs-6">
-                Advanced property valuation models combined with real-time market data analytics across global cities.
+                Advanced property valuation models combined with worldwide market data analytics across international cities.
             </p>
         </div>
 
@@ -158,14 +158,17 @@
                     <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
                         <h5 class="fw-bold mb-0 text-dark"><i class="fa-solid fa-calculator text-primary me-2"></i> Valuation Calculator</h5>
                         
-                        <!-- Fixed Currency Dropdown with proper width -->
-                        <select id="currency-select" class="form-select form-select-sm" style="width: 145px; padding-right: 28px;">
+                        <!-- Worldwide Currency Dropdown -->
+                        <select id="currency-select" class="form-select form-select-sm" style="width: 175px; padding-right: 28px;">
                             <option value="USD" selected>USD ($)</option>
-                            <option value="PKR">PKR (₨)</option>
-                            <option value="EUR">EUR (€)</option>
-                            <option value="GBP">GBP (£)</option>
-                            <option value="AED">AED</option>
-                            <option value="INR">INR (₹)</option>
+                            <option value="PKR">Pakistani Rupee (₨)</option>
+                            <option value="GBP">British Pound (£)</option>
+                            <option value="AED">UAE Dirham (AED)</option>
+                            <option value="EUR">Euro (€)</option>
+                            <option value="CAD">Canadian Dollar (CAD)</option>
+                            <option value="AUD">Australian Dollar (AUD)</option>
+                            <option value="SAR">Saudi Riyal (SAR)</option>
+                            <option value="INR">Indian Rupee (₹)</option>
                         </select>
                     </div>
 
@@ -185,9 +188,15 @@
                                 <label class="form-label"><i class="fa-solid fa-globe text-primary me-1"></i> Country</label>
                                 <select class="form-select" id="country" required onchange="updateCities()">
                                     <option value="Pakistan" selected>Pakistan</option>
-                                    <option value="United Arab Emirates">UAE</option>
-                                    <option value="United States">USA</option>
-                                    <option value="United Kingdom">UK</option>
+                                    <option value="United Arab Emirates">United Arab Emirates</option>
+                                    <option value="United States">United States</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Saudi Arabia">Saudi Arabia</option>
+                                    <option value="Turkey">Turkey</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="France">France</option>
                                     <option value="India">India</option>
                                 </select>
                             </div>
@@ -197,6 +206,8 @@
                                     <option value="Karachi" selected>Karachi</option>
                                     <option value="Lahore">Lahore</option>
                                     <option value="Islamabad">Islamabad</option>
+                                    <option value="Faisalabad">Faisalabad</option>
+                                    <option value="Rawalpindi">Rawalpindi</option>
                                 </select>
                             </div>
 
@@ -282,19 +293,28 @@
         let lastUSDPrice = 0;
 
         const cityOptions = {
-            "Pakistan": ["Karachi", "Lahore", "Islamabad", "Faisalabad"],
-            "United Arab Emirates": ["Dubai", "Abu Dhabi", "Sharjah"],
-            "United States": ["New York", "Los Angeles", "Chicago", "Houston"],
-            "United Kingdom": ["London", "Manchester", "Birmingham"],
-            "India": ["Mumbai", "Delhi", "Bangalore", "Hyderabad"]
+            "Pakistan": ["Karachi", "Lahore", "Islamabad", "Faisalabad", "Rawalpindi", "Multan", "Peshawar"],
+            "United Arab Emirates": ["Dubai", "Abu Dhabi", "Sharjah", "Ajman", "Ras Al Khaimah"],
+            "United States": ["New York", "Los Angeles", "Chicago", "Houston", "Miami", "San Francisco"],
+            "United Kingdom": ["London", "Manchester", "Birmingham", "Edinburgh", "Glasgow"],
+            "Canada": ["Toronto", "Vancouver", "Montreal", "Calgary", "Ottawa"],
+            "Australia": ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide"],
+            "Saudi Arabia": ["Riyadh", "Jeddah", "Mecca", "Medina", "Dammam"],
+            "Turkey": ["Istanbul", "Ankara", "Izmir", "Antalya", "Bursa"],
+            "Germany": ["Berlin", "Munich", "Frankfurt", "Hamburg", "Cologne"],
+            "France": ["Paris", "Marseille", "Lyon", "Toulouse", "Nice"],
+            "India": ["Mumbai", "Delhi", "Bangalore", "Hyderabad", "Chennai", "Kolkata"]
         };
 
         const exchangeRates = {
             USD: { rate: 1.0, symbol: '$' },
             PKR: { rate: 278.50, symbol: '₨ ' },
-            EUR: { rate: 0.92, symbol: '€' },
             GBP: { rate: 0.79, symbol: '£' },
             AED: { rate: 3.67, symbol: 'AED ' },
+            EUR: { rate: 0.92, symbol: '€' },
+            CAD: { rate: 1.38, symbol: 'CAD ' },
+            AUD: { rate: 1.52, symbol: 'AUD ' },
+            SAR: { rate: 3.75, symbol: 'SAR ' },
             INR: { rate: 83.20, symbol: '₹ ' }
         };
 

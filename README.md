@@ -1,7 +1,7 @@
 <div align="center">
 
 # 🏡 AI Real Estate Intelligence Platform
-### *Enterprise-Grade Machine Learning Property Valuation & Analytics Engine*
+### *Global Machine Learning Property Valuation & Market Analytics Engine*
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
@@ -10,7 +10,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 <p align="center">
-  <b>Instant property market valuations, global location analytics, and dynamic interactive charts powered by advanced Machine Learning regression models.</b>
+  <b>An advanced worldwide property valuation engine supporting international countries, dynamic cascading cities, multi-currency conversion, and real-time Chart.js market analytics.</b>
 </p>
 
 </div>
@@ -19,12 +19,12 @@
 
 ## ✨ Key Highlights & Features
 
-- **🤖 High-Precision ML Model**: Powered by a trained `scikit-learn` regression model (`house_price_model.pkl`) optimized for real estate appraisal.
-- **🌍 Global Country & City Selector**: Dynamic cascading dropdowns supporting multiple countries (Pakistan, UAE, USA, UK, India) and key international cities.
-- **📊 Real-Time Market Analytics**: Built-in interactive **Chart.js** graphs displaying price trends by quality rating and regional valuation multipliers.
-- **💎 Glassmorphism Dashboard UI**: A breathtaking, responsive side-by-side user interface styled with custom CSS gradients, Google Fonts (*Plus Jakarta Sans*), and FontAwesome icons.
-- **💱 Multi-Currency Converter**: Real-time conversion engine supporting **USD ($), Pakistani Rupees (PKR ₨), Euros (€), British Pounds (£), UAE Dirham (AED), and Indian Rupees (INR ₹)**.
-- **⚡ Quick Property Presets**: One-click preset selectors (*Cozy Home*, *Modern Family*, *Luxury Villa*) for instantaneous testing and evaluation.
+- **🤖 High-Precision ML Engine**: Powered by a trained `scikit-learn` regression model (`house_price_model.pkl`) for reliable property valuation.
+- **🌍 Worldwide Location Selector**: Dynamic cascading dropdowns supporting major global countries (Pakistan, UAE, USA, UK, Canada, Australia, Saudi Arabia, Turkey, Germany, France, India) and their key cities.
+- **📊 Interactive Visual Analytics**: Real-time **Chart.js** graphs displaying price trends by quality rating and regional city valuation multipliers.
+- **💎 Glassmorphism Dashboard UI**: Modern responsive side-by-side dashboard layout styled with custom CSS gradients and Google Fonts (*Plus Jakarta Sans*).
+- **💱 Global Multi-Currency Converter**: Real-time conversion engine supporting **USD ($), Pakistani Rupees (PKR ₨), British Pounds (£), UAE Dirhams (AED), Euros (€), Canadian Dollars (CAD), Australian Dollars (AUD), Saudi Riyals (SAR), and Indian Rupees (INR ₹)**.
+- **⚡ Quick Property Presets**: One-click preset loaders (*Cozy Home*, *Modern Family*, *Luxury Villa*) for rapid evaluation.
 
 ---
 
