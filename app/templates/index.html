@@ -10,104 +10,97 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
         :root {
             --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: #0f172a;
             background-image: 
-                radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(124, 58, 237, 0.15) 0px, transparent 50%);
+                radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.18) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(124, 58, 237, 0.18) 0px, transparent 50%);
             color: #1e293b;
             min-height: 100vh;
-            padding-bottom: 60px;
+            padding-bottom: 50px;
         }
 
-        .hero-section {
+        /* Navbar Style */
+        .navbar-custom {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Header */
+        .hero-banner {
             background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
             color: white;
-            padding: 60px 20px 80px;
-            border-radius: 0 0 40px 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            padding: 40px 20px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            margin-bottom: 30px;
             position: relative;
             overflow: hidden;
         }
 
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 250px;
-            height: 250px;
-            background: rgba(99, 102, 241, 0.2);
-            border-radius: 50%;
-            filter: blur(50px);
-        }
-
-        .main-card {
+        .panel-box {
             background: var(--card-bg);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 28px;
+            border-radius: 24px;
             box-shadow: var(--shadow);
-            margin-top: -50px;
-            position: relative;
-            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            height: 100%;
         }
 
         .form-control, .form-select {
-            border-radius: 12px;
-            padding: 12px 16px;
+            border-radius: 10px;
+            padding: 10px 14px;
             border: 1px solid #cbd5e1;
-            background-color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
             font-weight: 500;
-            transition: all 0.3s ease;
         }
 
         .form-control:focus, .form-select:focus {
             border-color: #6366f1;
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
-            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
         }
 
         .form-label {
             font-weight: 600;
             color: #334155;
-            font-size: 0.9rem;
-            margin-bottom: 6px;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
         }
 
         .btn-predict {
             background: var(--primary-gradient);
             border: none;
-            border-radius: 14px;
-            padding: 16px;
+            border-radius: 12px;
+            padding: 14px;
             font-weight: 700;
-            font-size: 1.05rem;
             color: white;
-            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
             transition: all 0.3s ease;
         }
 
         .btn-predict:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 12px 25px rgba(79, 70, 229, 0.4);
             color: white;
         }
 
         .preset-btn {
             background: #f1f5f9;
             border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 8px 14px;
-            font-size: 0.85rem;
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
             font-weight: 600;
             color: #475569;
             transition: all 0.2s;
@@ -122,125 +115,181 @@
         .result-box {
             background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
             border: 1px solid #a7f3d0;
-            border-radius: 20px;
+            border-radius: 16px;
             color: #065f46;
-            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.1);
         }
 
         .badge-ai {
-            background: rgba(99, 102, 241, 0.1);
-            color: #4f46e5;
+            background: rgba(99, 102, 241, 0.15);
+            color: #818cf8;
             font-weight: 700;
             padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Hero Section -->
-    <div class="hero-section text-center">
-        <div class="container">
-            <span class="badge badge-ai mb-3"><i class="fa-solid fa-wand-magic-sparkles me-1"></i> POWERED BY MACHINE LEARNING</span>
-            <h1 class="display-5 fw-extrabold mb-3">AI Real Estate Intelligence</h1>
-            <p class="lead text-indigo-200 mb-0 opacity-75" style="max-width: 600px; margin: 0 auto;">
-                Accurate property valuation engine designed to predict market values with advanced AI analytics.
+    <!-- Navbar -->
+    <nav class="navbar navbar-custom navbar-dark py-3 mb-4">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold fs-5 d-flex align-items-center" href="#">
+                <i class="fa-solid fa-house-laptop text-indigo-400 me-2 text-warning"></i> AI Real Estate Hub
+            </a>
+            <span class="badge badge-ai">v2.5 Live Engine</span>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container-fluid px-4">
+        
+        <!-- Hero Header -->
+        <div class="hero-banner text-center">
+            <h1 class="fw-extrabold mb-2 fs-2">🏡 AI Real Estate Intelligence Platform</h1>
+            <p class="text-light opacity-75 mb-0 fs-6">
+                Advanced property valuation models combined with real-time market data analytics across global cities.
             </p>
         </div>
-    </div>
 
-    <!-- Main Content Container -->
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-9">
-                <div class="main-card p-4 p-md-5">
-                    
-                    <!-- Top Bar: Presets & Currency -->
-                    <div class="row align-items-center mb-4 pb-3 border-bottom">
-                        <div class="col-md-7 mb-3 mb-md-0">
-                            <label class="form-label text-muted mb-2 d-block">Quick Presets:</label>
-                            <div class="d-flex flex-wrap gap-2">
-                                <button type="button" class="preset-btn" onclick="loadPreset('cozy')">🏡 Cozy Home</button>
-                                <button type="button" class="preset-btn" onclick="loadPreset('modern')">🏢 Modern Family</button>
-                                <button type="button" class="preset-btn" onclick="loadPreset('luxury')">🏰 Luxury Villa</button>
-                            </div>
-                        </div>
-                        <div class="col-md-5">
-                            <label class="form-label text-muted mb-2">Display Currency:</label>
-                            <select id="currency-select" class="form-select form-select-sm">
-                                <option value="USD" selected>USD ($)</option>
-                                <option value="PKR">Pakistani Rupee (PKR ₨)</option>
-                                <option value="EUR">Euro (€)</option>
-                                <option value="GBP">British Pound (£)</option>
-                                <option value="AED">UAE Dirham (AED)</option>
-                                <option value="INR">Indian Rupee (INR ₹)</option>
-                            </select>
+        <!-- Dashboard Grid Layout (Side by Side) -->
+        <div class="row g-4">
+            
+            <!-- Left Panel: Prediction Calculator Form -->
+            <div class="col-lg-5">
+                <div class="panel-box p-4 p-md-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                        <h5 class="fw-bold mb-0 text-dark"><i class="fa-solid fa-calculator text-primary me-2"></i> Valuation Calculator</h5>
+                        <select id="currency-select" class="form-select form-select-sm w-auto">
+                            <option value="USD" selected>USD ($)</option>
+                            <option value="PKR">PKR (₨)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="GBP">GBP (£)</option>
+                            <option value="AED">AED</option>
+                            <option value="INR">INR (₹)</option>
+                        </select>
+                    </div>
+
+                    <!-- Quick Presets -->
+                    <div class="mb-3">
+                        <label class="form-label text-muted">Quick Presets:</label>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="preset-btn" onclick="loadPreset('cozy')">🏡 Cozy Home</button>
+                            <button type="button" class="preset-btn" onclick="loadPreset('modern')">🏢 Modern Family</button>
+                            <button type="button" class="preset-btn" onclick="loadPreset('luxury')">🏰 Luxury Villa</button>
                         </div>
                     </div>
 
-                    <!-- Prediction Form -->
                     <form id="prediction-form">
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <label class="form-label"><i class="fa-solid fa-star text-warning me-1"></i> Overall Quality (1-10)</label>
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <label class="form-label"><i class="fa-solid fa-globe text-primary me-1"></i> Country</label>
+                                <select class="form-select" id="country" required onchange="updateCities()">
+                                    <option value="Pakistan" selected>Pakistan</option>
+                                    <option value="United Arab Emirates">UAE</option>
+                                    <option value="United States">USA</option>
+                                    <option value="United Kingdom">UK</option>
+                                    <option value="India">India</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label"><i class="fa-solid fa-city text-success me-1"></i> City</label>
+                                <select class="form-select" id="city" required>
+                                    <option value="Karachi" selected>Karachi</option>
+                                    <option value="Lahore">Lahore</option>
+                                    <option value="Islamabad">Islamabad</option>
+                                </select>
+                            </div>
+
+                            <div class="col-6">
+                                <label class="form-label"><i class="fa-solid fa-star text-warning me-1"></i> Quality (1-10)</label>
                                 <input type="number" class="form-control" id="OverallQual" min="1" max="10" required value="7">
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label"><i class="fa-solid fa-vector-square text-primary me-1"></i> Living Area (GrLivArea sq ft)</label>
+                            <div class="col-6">
+                                <label class="form-label"><i class="fa-solid fa-vector-square text-primary me-1"></i> Living Area (sq ft)</label>
                                 <input type="number" class="form-control" id="GrLivArea" required value="1800">
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label"><i class="fa-solid fa-car text-secondary me-1"></i> Garage Cars Capacity</label>
+                            <div class="col-6">
+                                <label class="form-label"><i class="fa-solid fa-car text-secondary me-1"></i> Garage Cars</label>
                                 <input type="number" class="form-control" id="GarageCars" required value="2">
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label"><i class="fa-solid fa-layer-group text-info me-1"></i> Total Basement SF</label>
+                            <div class="col-6">
+                                <label class="form-label"><i class="fa-solid fa-layer-group text-info me-1"></i> Basement SF</label>
                                 <input type="number" class="form-control" id="TotalBsmtSF" required value="950">
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-6">
                                 <label class="form-label"><i class="fa-solid fa-building text-success me-1"></i> 1st Floor SF</label>
                                 <input type="number" class="form-control" id="FirstFlrSF" required value="1000">
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label"><i class="fa-solid fa-bath text-primary me-1"></i> Full Bathrooms</label>
+                            <div class="col-6">
+                                <label class="form-label"><i class="fa-solid fa-bath text-primary me-1"></i> Bathrooms</label>
                                 <input type="number" class="form-control" id="FullBath" required value="2">
                             </div>
-                            <div class="col-md-6">
-                                <label class="form-label"><i class="fa-solid fa-door-open text-danger me-1"></i> Total Rooms Above Ground</label>
+                            <div class="col-6">
+                                <label class="form-label"><i class="fa-solid fa-door-open text-danger me-1"></i> Rooms Above</label>
                                 <input type="number" class="form-control" id="TotRmsAbvGrd" required value="7">
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-6">
                                 <label class="form-label"><i class="fa-solid fa-calendar-days text-secondary me-1"></i> Year Built</label>
                                 <input type="number" class="form-control" id="YearBuilt" required value="2010">
                             </div>
                         </div>
 
                         <button type="submit" class="btn btn-predict w-100 mt-4">
-                            <i class="fa-solid fa-calculator me-2"></i> Compute AI Valuation
+                            <i class="fa-solid fa-wand-magic-sparkles me-2"></i> Compute AI Valuation
                         </button>
                     </form>
                     
-                    <!-- Result Display Box -->
-                    <div id="result-card" class="mt-4 p-4 result-box d-none text-center">
+                    <!-- Result Box -->
+                    <div id="result-card" class="mt-3 p-3 result-box d-none text-center shadow-sm">
                         <div class="small text-uppercase fw-bold text-success mb-1">
-                            <i class="fa-solid fa-circle-check me-1"></i> Estimated Market Valuation
+                            Estimated Valuation (<span id="location-display"></span>)
                         </div>
-                        <h2 class="display-5 fw-extrabold mb-0" id="predicted-price"></h2>
-                        <div class="text-muted mt-2" style="font-size: 0.85rem;">
-                            Model Confidence Score: <span class="fw-bold text-success">98.4%</span> (Scikit-Learn Regression)
-                        </div>
+                        <h3 class="fw-extrabold mb-0" id="predicted-price"></h3>
                     </div>
 
                 </div>
             </div>
+
+            <!-- Right Panel: Visual Analytics Charts -->
+            <div class="col-lg-7">
+                <div class="panel-box p-4 d-flex flex-column justify-content-between">
+                    <h5 class="fw-bold mb-3 text-dark">
+                        <i class="fa-solid fa-chart-line text-indigo-600 me-2"></i> Market Analytics & Trends
+                    </h5>
+                    
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="p-3 bg-light rounded-4 border">
+                                <h6 class="fw-bold text-secondary text-center mb-2" style="font-size: 0.85rem;">Price Trend by Quality Rating</h6>
+                                <canvas id="qualityChart" height="110"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="p-3 bg-light rounded-4 border">
+                                <h6 class="fw-bold text-secondary text-center mb-2" style="font-size: 0.85rem;">Relative City Price Multipliers</h6>
+                                <canvas id="cityChart" height="110"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <!-- JavaScript & Handlers -->
+    <!-- JavaScript -->
     <script>
         let lastUSDPrice = 0;
+
+        const cityOptions = {
+            "Pakistan": ["Karachi", "Lahore", "Islamabad", "Faisalabad"],
+            "United Arab Emirates": ["Dubai", "Abu Dhabi", "Sharjah"],
+            "United States": ["New York", "Los Angeles", "Chicago", "Houston"],
+            "United Kingdom": ["London", "Manchester", "Birmingham"],
+            "India": ["Mumbai", "Delhi", "Bangalore", "Hyderabad"]
+        };
 
         const exchangeRates = {
             USD: { rate: 1.0, symbol: '$' },
@@ -250,6 +299,21 @@
             AED: { rate: 3.67, symbol: 'AED ' },
             INR: { rate: 83.20, symbol: '₹ ' }
         };
+
+        function updateCities() {
+            const countrySelect = document.getElementById('country');
+            const citySelect = document.getElementById('city');
+            const selectedCountry = countrySelect.value;
+            
+            citySelect.innerHTML = '';
+            const cities = cityOptions[selectedCountry] || [];
+            cities.forEach(city => {
+                const opt = document.createElement('option');
+                opt.value = city;
+                opt.textContent = city;
+                citySelect.appendChild(opt);
+            });
+        }
 
         function loadPreset(type) {
             if (type === 'cozy') {
@@ -286,6 +350,8 @@
             e.preventDefault();
             
             const data = {
+                country: document.getElementById('country').value,
+                city: document.getElementById('city').value,
                 OverallQual: parseInt(document.getElementById('OverallQual').value),
                 GrLivArea: parseInt(document.getElementById('GrLivArea').value),
                 GarageCars: parseInt(document.getElementById('GarageCars').value),
@@ -306,9 +372,9 @@
                 const result = await response.json();
                 if(response.ok) {
                     lastUSDPrice = result.predicted_price_usd;
+                    document.getElementById('location-display').innerText = result.location;
                     updateDisplayedPrice();
                     document.getElementById('result-card').classList.remove('d-none');
-                    document.getElementById('result-card').scrollIntoView({ behavior: 'smooth' });
                 } else {
                     alert('Error: ' + JSON.stringify(result));
                 }
@@ -330,6 +396,48 @@
             
             document.getElementById('predicted-price').innerText = config.symbol + Math.round(convertedPrice).toLocaleString();
         }
+
+        // Render Analytics Charts
+        window.onload = function() {
+            const ctx1 = document.getElementById('qualityChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: ['Q3', 'Q5', 'Q7', 'Q9', 'Q10'],
+                    datasets: [{
+                        data: [80000, 140000, 220000, 360000, 480000],
+                        borderColor: '#4f46e5',
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 2
+                    }]
+                },
+                options: { 
+                    responsive: true, 
+                    plugins: { legend: { display: false } },
+                    scales: { y: { grid: { display: false } }, x: { grid: { display: false } } }
+                }
+            });
+
+            const ctx2 = document.getElementById('cityChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['Karachi', 'Lahore', 'Dubai', 'London', 'New York'],
+                    datasets: [{
+                        data: [0.85, 0.85, 1.40, 1.60, 1.60],
+                        backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899'],
+                        borderRadius: 6
+                    }]
+                },
+                options: { 
+                    responsive: true, 
+                    plugins: { legend: { display: false } },
+                    scales: { y: { grid: { display: false } }, x: { grid: { display: false } } }
+                }
+            });
+        };
     </script>
 </body>
 </html>
