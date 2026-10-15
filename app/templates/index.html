@@ -40,15 +40,15 @@
         .hero-banner {
             background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
             color: white;
-            padding: 40px 20px;
-            border-radius: 24px;
+            padding: 30px 20px;
+            border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .panel-box {
             background: var(--card-bg);
-            border-radius: 24px;
+            border-radius: 20px;
             box-shadow: var(--shadow);
             border: 1px solid rgba(255, 255, 255, 0.5);
             height: 100%;
@@ -56,9 +56,9 @@
 
         .form-control, .form-select {
             border-radius: 10px;
-            padding: 10px 14px;
+            padding: 8px 12px;
             border: 1px solid #cbd5e1;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
         }
 
@@ -70,15 +70,15 @@
         .form-label {
             font-weight: 600;
             color: #334155;
-            font-size: 0.85rem;
-            margin-bottom: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 3px;
         }
 
         .btn-predict {
             background: var(--primary-gradient);
             border: none;
             border-radius: 12px;
-            padding: 14px;
+            padding: 12px;
             font-weight: 700;
             color: white;
             box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
@@ -95,8 +95,8 @@
             background: #f1f5f9;
             border: 1px solid #e2e8f0;
             border-radius: 8px;
-            padding: 6px 12px;
-            font-size: 0.8rem;
+            padding: 5px 10px;
+            font-size: 0.75rem;
             font-weight: 600;
             color: #475569;
             transition: all 0.2s;
@@ -111,7 +111,7 @@
         .result-box {
             background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
             border: 1px solid #a7f3d0;
-            border-radius: 16px;
+            border-radius: 14px;
             color: #065f46;
         }
 
@@ -124,17 +124,23 @@
             font-size: 0.75rem;
             letter-spacing: 0.5px;
         }
+
+        .chart-container {
+            position: relative;
+            height: 190px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-custom navbar-dark py-3 mb-4">
+    <nav class="navbar navbar-custom navbar-dark py-3 mb-3">
         <div class="container-fluid px-4">
             <a class="navbar-brand fw-bold fs-5 d-flex align-items-center" href="#">
                 <i class="fa-solid fa-house-laptop text-warning me-2"></i> AI Real Estate Hub
             </a>
-            <span class="badge badge-ai">v3.0 Global Engine</span>
+            <span class="badge badge-ai">v3.1 Global Engine</span>
         </div>
     </nav>
 
@@ -143,8 +149,8 @@
         
         <!-- Hero Header -->
         <div class="hero-banner text-center">
-            <h1 class="fw-extrabold mb-2 fs-2">🏡 AI Real Estate Intelligence Platform</h1>
-            <p class="text-light opacity-75 mb-0 fs-6">
+            <h1 class="fw-extrabold mb-1 fs-3">🏡 AI Real Estate Intelligence Platform</h1>
+            <p class="text-light opacity-75 mb-0" style="font-size: 0.85rem;">
                 Advanced property valuation models combined with worldwide market data analytics across international cities.
             </p>
         </div>
@@ -154,12 +160,12 @@
             
             <!-- Left Panel: Prediction Calculator Form -->
             <div class="col-lg-5">
-                <div class="panel-box p-4 p-md-4">
+                <div class="panel-box p-3 p-md-4">
                     <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-                        <h5 class="fw-bold mb-0 text-dark"><i class="fa-solid fa-calculator text-primary me-2"></i> Valuation Calculator</h5>
+                        <h6 class="fw-bold mb-0 text-dark"><i class="fa-solid fa-calculator text-primary me-2"></i> Valuation Calculator</h6>
                         
                         <!-- Worldwide Currency Dropdown -->
-                        <select id="currency-select" class="form-select form-select-sm" style="width: 175px; padding-right: 28px;">
+                        <select id="currency-select" class="form-select form-select-sm shadow-sm" style="width: 220px; font-weight: 600; padding-right: 30px;">
                             <option value="USD" selected>USD ($)</option>
                             <option value="PKR">Pakistani Rupee (₨)</option>
                             <option value="GBP">British Pound (£)</option>
@@ -173,9 +179,9 @@
                     </div>
 
                     <!-- Quick Presets -->
-                    <div class="mb-3">
+                    <div class="mb-2">
                         <label class="form-label text-muted">Quick Presets:</label>
-                        <div class="d-flex flex-wrap gap-2">
+                        <div class="d-flex flex-wrap gap-1">
                             <button type="button" class="preset-btn" onclick="loadPreset('cozy')">🏡 Cozy Home</button>
                             <button type="button" class="preset-btn" onclick="loadPreset('modern')">🏢 Modern Family</button>
                             <button type="button" class="preset-btn" onclick="loadPreset('luxury')">🏰 Luxury Villa</button>
@@ -183,7 +189,7 @@
                     </div>
 
                     <form id="prediction-form">
-                        <div class="row g-3">
+                        <div class="row g-2">
                             <div class="col-6">
                                 <label class="form-label"><i class="fa-solid fa-globe text-primary me-1"></i> Country</label>
                                 <select class="form-select" id="country" required onchange="updateCities()">
@@ -245,7 +251,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-predict w-100 mt-4">
+                        <button type="submit" class="btn btn-predict w-100 mt-3">
                             <i class="fa-solid fa-wand-magic-sparkles me-2"></i> Compute AI Valuation
                         </button>
                     </form>
@@ -264,21 +270,25 @@
             <!-- Right Panel: Visual Analytics Charts -->
             <div class="col-lg-7">
                 <div class="panel-box p-4 d-flex flex-column justify-content-between">
-                    <h5 class="fw-bold mb-3 text-dark">
-                        <i class="fa-solid fa-chart-line text-indigo-600 me-2"></i> Market Analytics & Trends
-                    </h5>
+                    <h6 class="fw-bold mb-3 text-dark">
+                        <i class="fa-solid fa-chart-line text-indigo-600 me-2"></i> Market Analytics & Global Trends
+                    </h6>
                     
                     <div class="row g-3">
                         <div class="col-12">
                             <div class="p-3 bg-light rounded-4 border">
-                                <h6 class="fw-bold text-secondary text-center mb-2" style="font-size: 0.85rem;">Price Trend by Quality Rating</h6>
-                                <canvas id="qualityChart" height="110"></canvas>
+                                <h6 class="fw-bold text-secondary text-center mb-1" style="font-size: 0.8rem;">Price Trend by Quality Rating</h6>
+                                <div class="chart-container">
+                                    <canvas id="qualityChart"></canvas>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="p-3 bg-light rounded-4 border">
-                                <h6 class="fw-bold text-secondary text-center mb-2" style="font-size: 0.85rem;">Relative City Price Multipliers</h6>
-                                <canvas id="cityChart" height="110"></canvas>
+                                <h6 class="fw-bold text-secondary text-center mb-1" style="font-size: 0.8rem;">Global Regional Price Multipliers</h6>
+                                <div class="chart-container">
+                                    <canvas id="cityChart"></canvas>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -415,26 +425,36 @@
             document.getElementById('predicted-price').innerText = config.symbol + Math.round(convertedPrice).toLocaleString();
         }
 
-        // Render Analytics Charts
-        window.onload = function() {
+        // Render Analytics Charts Safely on DOM Load
+        document.addEventListener("DOMContentLoaded", function() {
             const ctx1 = document.getElementById('qualityChart').getContext('2d');
             new Chart(ctx1, {
                 type: 'line',
                 data: {
                     labels: ['Q3', 'Q5', 'Q7', 'Q9', 'Q10'],
                     datasets: [{
-                        data: [80000, 140000, 220000, 360000, 480000],
+                        data: [80000, 140000, 220000, 360000, 500000],
                         borderColor: '#4f46e5',
                         backgroundColor: 'rgba(79, 70, 229, 0.1)',
                         fill: true,
                         tension: 0.4,
-                        borderWidth: 2
+                        borderWidth: 2.5
                     }]
                 },
                 options: { 
-                    responsive: true, 
+                    responsive: true,
+                    maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
-                    scales: { y: { grid: { display: false } }, x: { grid: { display: false } } }
+                    scales: { 
+                        y: { 
+                            grid: { display: false },
+                            ticks: { font: { size: 10 } }
+                        }, 
+                        x: { 
+                            grid: { display: false },
+                            ticks: { font: { size: 10 } }
+                        } 
+                    }
                 }
             });
 
@@ -442,20 +462,30 @@
             new Chart(ctx2, {
                 type: 'bar',
                 data: {
-                    labels: ['Karachi', 'Lahore', 'Dubai', 'London', 'New York'],
+                    labels: ['Karachi', 'Dubai', 'London', 'Toronto', 'New York'],
                     datasets: [{
-                        data: [0.85, 0.85, 1.40, 1.60, 1.60],
-                        backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899'],
+                        data: [0.85, 1.40, 1.60, 1.45, 1.80],
+                        backgroundColor: ['#3b82f6', '#f59e0b', '#8b5cf6', '#10b981', '#ec4899'],
                         borderRadius: 6
                     }]
                 },
                 options: { 
-                    responsive: true, 
+                    responsive: true,
+                    maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
-                    scales: { y: { grid: { display: false } }, x: { grid: { display: false } } }
+                    scales: { 
+                        y: { 
+                            grid: { display: false },
+                            ticks: { font: { size: 10 } }
+                        }, 
+                        x: { 
+                            grid: { display: false },
+                            ticks: { font: { size: 10 } }
+                        } 
+                    }
                 }
             });
-        };
+        });
     </script>
 </body>
 </html>
