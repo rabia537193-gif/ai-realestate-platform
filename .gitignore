@@ -1,0 +1,15 @@
+# Python & Virtual Environment
+venv/
+.env
+__pycache__/
+*.py[cod]
+*$py.class
+*.sqlite3
+
+# IDE / OS specific files
+.vscode/
+.DS_Store
+Thumbs.db
+
+*.rar
+*.zip
